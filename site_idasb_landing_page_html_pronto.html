@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IDASB – Instituto de Desenvolvimento do Associativismo e Cooperação Solidária da Bahia</title>
+  <meta name="description" content="IDASB: fortalecendo o empreendedorismo solidário na Bahia por meio de projetos, capacitações e redes de cooperação." />
+  <meta property="og:title" content="IDASB – Empreendedorismo Solidário na Bahia" />
+  <meta property="og:description" content="Fortalecendo associações, cooperativas e iniciativas comunitárias." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #004aad;
+      --red: #d7263d;
+      --green: #2ba84a;
+      --bg: #f4f4f4;
+      --text: #1a1a1a;
+      --white: #ffffff;
+      --muted: #5a5a5a;
+      --card: #ffffff;
+      --shadow: 0 10px 25px rgba(0,0,0,.08);
+      --radius: 16px;
+      --radius-lg: 24px;
+      --container: 1200px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(100% - 2rem, var(--container)); margin: 0 auto; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #eaeaea;
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: .75rem 0;
+    }
+    .brand { display: flex; align-items: center; gap: .75rem; font-weight: 700; color: var(--blue); }
+    .brand .logo {
+      width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, var(--blue), var(--green));
+      display: grid; place-items: center; color: white; font-weight: 700;
+    }
+    nav ul { list-style: none; display: flex; gap: 1.25rem; margin: 0; padding: 0; }
+    nav a { font-weight: 500; color: #222; }
+    nav a:hover { color: var(--blue); }
+    .cta {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--red); color: white; padding: .65rem 1rem; border-radius: 999px; font-weight: 600;
+      box-shadow: var(--shadow);
+    }
+    .menu-btn { display: none; border: 1px solid #ddd; padding: .5rem .75rem; border-radius: 10px; background: white; }
+
+    /* Hero */
+    .hero {
+      padding: 5rem 0 3rem; position: relative; overflow: hidden;
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(0,74,173,.12), transparent),
+                  radial-gradient(1200px 600px at 100% 10%, rgba(39,122,77,.10), transparent);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; align-items: center; }
+    .kicker { color: var(--green); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: .9rem; }
+    h1 { font-size: clamp(2rem, 4vw + 1rem, 3.2rem); line-height: 1.15; margin: .5rem 0 1rem; }
+    .lead { color: var(--muted); font-size: 1.05rem; }
+    .actions { display: flex; gap: .75rem; margin-top: 1.25rem; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .8rem 1.1rem; border-radius: 12px; font-weight: 600; border: 2px solid transparent; }
+    .btn.primary { background: var(--blue); color: white; }
+    .btn.secondary { background: white; color: var(--blue); border-color: var(--blue); }
+
+    .hero-card {
+      background: var(--card); border-radius: var(--radius-lg); padding: 1rem; box-shadow: var(--shadow);
+      display: grid; gap: .75rem;
+    }
+    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
+    .stat { background: #fafafa; border-radius: 14px; padding: 1rem; text-align: center; }
+    .stat strong { font-size: 1.3rem; color: var(--blue); }
+
+    /* Sections */
+    section { padding: 3rem 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 1.5rem; }
+    .section-head h2 { margin: 0; font-size: clamp(1.4rem, 1.5vw + 1rem, 2rem); }
+    .section-head p { margin: 0; color: var(--muted); }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+
+    .card { background: var(--card); border-radius: var(--radius); padding: 1rem; box-shadow: var(--shadow); }
+    .badge { display: inline-block; padding: .25rem .6rem; border-radius: 999px; font-size: .75rem; font-weight: 600; }
+    .badge.blue { background: rgba(0,74,173,.1); color: var(--blue); }
+    .badge.red { background: rgba(215,38,61,.1); color: var(--red); }
+    .badge.green { background: rgba(43,168,74,.12); color: var(--green); }
+
+    /* Timeline / Eventos */
+    .timeline { position: relative; padding-left: 1rem; }
+    .timeline::before { content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: #e5e5e5; }
+    .tl-item { position: relative; margin-left: 1rem; padding-bottom: 1rem; }
+    .tl-item::before { content: ""; position: absolute; left: -13px; top: .25rem; width: 10px; height: 10px; border-radius: 999px; background: var(--green); box-shadow: 0 0 0 3px #e9f6ed; }
+
+    /* Partners */
+    .partners { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; align-items: center; }
+    .partners .logo { background: white; border: 1px solid #eee; border-radius: 12px; height: 64px; display: grid; place-items: center; color: #888; font-weight: 600; }
+
+    /* Footer */
+    footer { background: #0f1830; color: #e6e9f2; padding: 2.5rem 0 2rem; margin-top: 2rem; }
+    footer a { color: #e6e9f2; opacity: .9; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; }
+    .subtle { color: #b6bdd3; font-size: .9rem; }
+    .copyright { border-top: 1px solid rgba(255,255,255,.1); margin-top: 1.5rem; padding-top: 1rem; font-size: .9rem; color: #b6bdd3; }
+
+    /* Utilities */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+    .pill { border-radius: 999px; padding: .2rem .6rem; font-weight: 600; font-size: .75rem; }
+    .emph { color: var(--blue); font-weight: 600; }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+      .partners { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; }
+      nav ul { display: none; position: absolute; right: 1rem; top: 64px; background: white; padding: .75rem; border: 1px solid #eee; border-radius: 12px; box-shadow: var(--shadow); }
+      nav ul.open { display: grid; gap: .5rem; }
+      .menu-btn { display: inline-flex; }
+    }
+    @media (max-width: 640px) {
+      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .hero { padding-top: 4rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <span class="logo" aria-hidden="true">ID</span>
+        <span>IDASB</span>
+      </a>
+      <nav aria-label="Principal">
+        <button class="menu-btn" aria-controls="menu" aria-expanded="false" id="menuBtn">Menu</button>
+        <ul id="menu">
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#eventos">Eventos</a></li>
+          <li><a href="#parceiros">Parceiros</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <a class="cta" href="#contato">Seja Parceiro</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="top" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="kicker">Empreendedorismo Solidário</span>
+        <h1>Fortalecendo redes de <span class="emph">cooperação</span> e desenvolvimento na Bahia</h1>
+        <p class="lead">O <strong>IDASB</strong> apoia associações, cooperativas e iniciativas comunitárias com formação, projetos e conexões, impulsionando a economia solidária em todo o estado.</p>
+        <div class="actions">
+          <a href="#projetos" class="btn primary">Conheça os projetos</a>
+          <a href="#contato" class="btn secondary">Fale com a gente</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-labelledby="impacto">
+        <h2 id="impacto" class="sr-only">Indicadores de Impacto</h2>
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>120+</strong>
+            <div>Empreendimentos apoiados</div>
+          </div>
+          <div class="stat">
+            <strong>35</strong>
+            <div>Municípios alcançados</div>
+          </div>
+          <div class="stat">
+            <strong>1.8k</strong>
+            <div>Pessoas formadas</div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <span class="badge green">Capacitação</span>
+            <h3>Formações práticas</h3>
+            <p class="subtle">Cursos e oficinas em gestão, finanças solidárias, comercialização e marketing comunitário.</p>
+          </div>
+          <div class="card">
+            <span class="badge blue">Projetos</span>
+            <h3>Desenvolvimento local</h3>
+            <p class="subtle">Parcerias com prefeituras, universidades e organizações para gerar renda e inclusão.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Sobre -->
+  <section id="sobre">
+    <div class="container">
+      <div class="section-head">
+        <h2>Sobre o IDASB</h2>
+        <p>Missão, visão e valores</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <span class="badge blue">Missão</span>
+          <p>Fortalecer o <strong>associativismo</strong> e a <strong>cooperação solidária</strong> por meio de formação, desenvolvimento de projetos e articulação de redes na Bahia.</p>
+        </article>
+        <article class="card">
+          <span class="badge green">Visão</span>
+          <p>Ser referência na promoção do <strong>empreendedorismo solidário</strong>, contribuindo para um território mais justo, sustentável e colaborativo.</p>
+        </article>
+        <article class="card">
+          <span class="badge red">Valores</span>
+          <p>Solidariedade, transparência, diversidade, participação social, sustentabilidade e impacto comunitário.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projetos -->
+  <section id="projetos">
+    <div class="container">
+      <div class="section-head">
+        <h2>Projetos e Iniciativas</h2>
+        <a class="btn secondary" href="#contato">Quero apoiar</a>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3>Programa de Formação</h3>
+          <p class="subtle">Trilhas de aprendizagem para cooperativas e associações: gestão, governança, finanças e comercialização.</p>
+        </article>
+        <article class="card">
+          <h3>Rede de Comercialização</h3>
+          <p class="subtle">Conexão com feiras, marketplaces e compras institucionais para ampliar o escoamento da produção.</p>
+        </article>
+        <article class="card">
+          <h3>Laboratório de Inovação Social</h3>
+          <p class="subtle">Prototipagem de soluções para desafios territoriais com metodologias participativas.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notícias & Eventos -->
+  <section id="eventos">
+    <div class="container">
+      <div class="section-head">
+        <h2>Notícias & Eventos</h2>
+        <p>Agenda e atualizações</p>
+      </div>
+      <div class="grid-2">
+        <div class="card timeline">
+          <h3>Próximos eventos</h3>
+          <div class="tl-item">
+            <strong>Set 12</strong> – Oficina de Precificação Solidária – <span class="pill" style="background: rgba(0,74,173,.1); color: var(--blue)">Salvador</span>
+          </div>
+          <div class="tl-item">
+            <strong>Out 05</strong> – Feira de Cooperativas – <span class="pill" style="background: rgba(215,38,61,.1); color: var(--red)">Feira de Santana</span>
+          </div>
+          <div class="tl-item">
+            <strong>Nov 21</strong> – Encontro Bahia Solidária – <span class="pill" style="background: rgba(43,168,74,.12); color: var(--green)">Vitória da Conquista</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Últimas notícias</h3>
+          <ul>
+            <li><strong>Edital aberto</strong>: seleção de empreendimentos para mentoria (inscrições até 30/09)</li>
+            <li>Parceria com universidade amplia vagas de capacitação</li>
+            <li>Rede de Comercialização lança catálogo coletivo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Depoimentos / Galeria -->
+  <section id="depoimentos">
+    <div class="container">
+      <div class="section-head">
+        <h2>Vozes do Território</h2>
+        <p>Depoimentos de quem caminha com a gente</p>
+      </div>
+      <div class="grid-3">
+        <figure class="card">
+          <blockquote>“Com o IDASB aprendemos a organizar a produção e melhorar nossa renda.”</blockquote>
+          <figcaption class="subtle">Ana Souza – Associação de Artesãs</figcaption>
+        </figure>
+        <figure class="card">
+          <blockquote>“A rede de comercialização abriu portas para vender para novos mercados.”</blockquote>
+          <figcaption class="subtle">Cooperativa Raízes da Bahia</figcaption>
+        </figure>
+        <figure class="card">
+          <blockquote>“A formação em finanças nos deu segurança para crescer.”</blockquote>
+          <figcaption class="subtle">João Pereira – Empreendimento Solidário</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parceiros -->
+  <section id="parceiros">
+    <div class="container">
+      <div class="section-head">
+        <h2>Parceiros</h2>
+        <p>Juntos para ampliar o impacto</p>
+      </div>
+      <div class="partners">
+        <div class="logo">Prefeitura</div>
+        <div class="logo">Universidade</div>
+        <div class="logo">Sebrae</div>
+        <div class="logo">Banco</div>
+        <div class="logo">ONG</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato">
+    <div class="container">
+      <div class="section-head">
+        <h2>Fale com o IDASB</h2>
+        <p>Traga sua ideia, parceria ou projeto</p>
+      </div>
+      <div class="grid-2">
+        <form class="card" onsubmit="event.preventDefault(); alert('Mensagem enviada! Em breve entraremos em contato.'); this.reset();">
+          <label>
+            <span class="sr-only">Nome</span>
+            <input required placeholder="Seu nome" style="width:100%;padding:.9rem;border:1px solid #e5e5e5;border-radius:10px;margin-bottom:.75rem;">
+          </label>
+          <label>
+            <span class="sr-only">E-mail</span>
+            <input type="email" required placeholder="Seu e-mail" style="width:100%;padding:.9rem;border:1px solid #e5e5e5;border-radius:10px;margin-bottom:.75rem;">
+          </label>
+          <label>
+            <span class="sr-only">Mensagem</span>
+            <textarea required rows="5" placeholder="Conte rapidamente sua necessidade" style="width:100%;padding:.9rem;border:1px solid #e5e5e5;border-radius:10px;margin-bottom:.75rem;"></textarea>
+          </label>
+          <button class="btn primary" type="submit">Enviar mensagem</button>
+        </form>
+        <div class="card">
+          <h3>Contato direto</h3>
+          <p class="subtle">E-mail: contato@idasb.org.br<br>Telefone/WhatsApp: (71) 99999-0000</p>
+          <h3>Endereço</h3>
+          <p class="subtle">Salvador – BA<br>Atendimento de segunda a sexta, 9h às 17h</p>
+          <h3>Redes sociais</h3>
+          <p class="subtle">Instagram • Facebook • LinkedIn</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="color:#fff">
+          <span class="logo" aria-hidden="true" style="background: linear-gradient(135deg, var(--blue), var(--red));">ID</span>
+          <span>IDASB</span>
+        </div>
+        <p class="subtle">Instituto de Desenvolvimento do Associativismo e Cooperação Solidária da Bahia.</p>
+      </div>
+      <div>
+        <h4>Mapa do site</h4>
+        <p class="subtle"><a href="#sobre">Sobre</a> · <a href="#projetos">Projetos</a> · <a href="#eventos">Eventos</a> · <a href="#parceiros">Parceiros</a> · <a href="#contato">Contato</a></p>
+      </div>
+      <div>
+        <h4>Boletim</h4>
+        <form onsubmit="event.preventDefault(); alert('Inscrição realizada!'); this.reset();">
+          <input required type="email" placeholder="Seu e-mail" style="width:100%;padding:.8rem;border:1px solid rgba(255,255,255,.3);border-radius:10px;margin-bottom:.5rem;background:rgba(255,255,255,.1);color:#fff;">
+          <button class="btn" style="background: var(--green); color: #fff; width:100%">Assinar</button>
+        </form>
+      </div>
+    </div>
+    <div class="container copyright">
+      © <span id="year"></span> IDASB. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script>
+    // Ano automático
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menu mobile
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+    btn?.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (!id || id === '#') return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        menu.classList.remove('open');
+        btn?.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>
